@@ -160,35 +160,61 @@
 
 // countPairs([-1, 1, 2, 3, 1], 2);
 
-// Merge strings alternatively 1768
-function mergeAlternatively(word1, word2) {
-  let result = "";
-  let longestString;
-  let shortestString;
-  if (word1.length === 0 || word2.length === 0) return;
+// Merge strings alternatively 1768-------------------------------------------------
+// function mergeAlternatively(word1, word2) {
+//   let result = "";
+//   let longestString;
+//   let shortestString;
+//   if (word1.length === 0 || word2.length === 0) return;
 
-  if (word1.length > word2.length) {
-    longestString = word1;
-    shortestString = word2;
+//   if (word1.length > word2.length) {
+//     longestString = word1;
+//     shortestString = word2;
+//   } else {
+//     longestString = word2;
+//     shortestString = word1;
+//   }
+
+//   for (var i = 0; i < shortestString.length; i++) {
+//     let ptr1 = word1[i];
+//     let ptr2 = word2[i];
+//     result = result.concat(ptr1.concat(ptr2));
+//   }
+//   for (var j = i; i < longestString.length; i++) {
+//     result = result.concat(longestString[i]);
+//   }
+
+//   return result;
+// }
+
+// // word1 = "abc" a p b
+// // word2 = "pqrs"
+// //  i < 4
+
+// mergeAlternatively("abc", "pqrs");
+
+// Greatest common divisor of strings 1071----------------------------------------------
+function gcdOfStrings(str1, str2) {
+  // if(str2.length > str1.length) return gcdOfStrings(str2, str1);
+  // if(!str1.includes(str2)) return "";
+  // if(str1.startsWith(str2)) {
+  //   var sub = str1.substr(str2.length);
+  // }
+  // return sub;
+
+  if (str1 + str2 != str2 + str1) {
+    return "";
+  } else if (str1 == str2) {
+    return str1;
+  } else if (str1.length > str2.length) {
+    return gcdOfStrings(str1.substring(str2.length), str2);
   } else {
-    longestString = word2;
-    shortestString = word1;
+    return gcdOfStrings(str2.substring(str1.length), str1);
   }
-
-  for (var i = 0; i < shortestString.length; i++) {
-    let ptr1 = word1[i];
-    let ptr2 = word2[i];
-    result = result.concat(ptr1.concat(ptr2));
-  }
-  for (var j = i; i < longestString.length; i++) {
-    result = result.concat(longestString[i]);
-  }
-
-  return result;
 }
 
-// word1 = "abc" a p b
-// word2 = "pqrs"
-//  i < 4
-
-mergeAlternatively("abc", "pqrs");
+gcdOfStrings("ABCABC", "ABC");
+// A === A
+// gcdOfStrings(str1.substring(str2.length), str2);
+//            ABCABC.SUBSTR(3),ABC
+// ABC,ABC
